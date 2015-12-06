@@ -1,0 +1,68 @@
+# Boxstarter Package for configuring my preferred developer laptop
+# This includes most things needed from JVM-based development
+# Used on Windows 7 Pro
+
+# ===== Set personal preference items ====
+# The usual windows preferences
+Update-ExecutionPolicy Unrestricted
+Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions
+Set-TaskbarOptions -Size Small -Lock
+
+# I like a 2-line command prompt
+# <current directory path>
+# <timestamp> =>
+[Environment]::SetEnvironmentVariable("Prompt", '$P$_$T$H$H$H$S$Q$G$S', "Machine")
+
+# Make cmd.exe perfect for me
+# Consolas, light-green, 14-point font on black background
+# Up scroll buffer to 500 lines and window height to 52 lines
+# Make the pop-up window white with dark-red text. You do know you
+# can press F7 and get a command history pop-up, right?
+Set-ItemProperty -Path HKCU:\Console -Name FaceName -Value Consolas
+Set-ItemProperty -Path HKCU:\Console -Name FontFamily -Type Dword -Value 0x00000036
+Set-ItemProperty -Path HKCU:\Console -Name FontSize -Type Dword -Value 0x000e0000
+Set-ItemProperty -Path HKCU:\Console -Name FontWeight -Type Dword -Value 0x00000190
+Set-ItemProperty -Path HKCU:\Console -Name PopupColors -Type Dword -Value 0x000000f4
+Set-ItemProperty -Path HKCU:\Console -Name ScreenColors -Type Dword -Value 0x0000000a
+Set-ItemProperty -Path HKCU:\Console -Name ScreenBufferSize -Type Dword -Value 0x01f40050
+Set-ItemProperty -Path HKCU:\Console -Name WindowSize -Type Dword -Value 0x00340050
+Set-ItemProperty -Path HKCU:\Console -Name HistoryNoDup -Type Dword -Value 0x00000001
+
+$DevRootPath="d:\devl"
+$DevWorkspace = "$DevRootPath\ws"
+$DevSoftware = "$DevRootPath\software"
+$DevServers = "$DevRootPath\servers"
+$DevLogs = "$DevRootPath\logs"
+
+# My standard directory structure for application development
+New-Item -Path $DevRootPath -ItemType directory -force
+New-Item -Path $DevWorkspace -ItemType directory -force
+New-Item -Path $DevSoftware -ItemType directory -force
+New-Item -Path $DevServers -ItemType directory -force
+New-Item -Path $DevLogs -ItemType directory -force
+
+# Standard developer tools for most things
+choco install putty.install -installArgs "/DIR=$DevSoftware\putty"
+choco install winscp -installArgs "/DIR=$DevSoftware\winscp"
+#choco install cntlm
+choco install tortoisesvn
+#choco install maven -Version 2.0.11
+
+# My personal tools
+choco install fiddler
+choco install virtuawin
+
+# DevOps tools
+choco install boot2docker
+choco install vagrant
+choco install rsync
+
+# My personal software
+#choco install keepass
+choco install evernote
+
+# Project level dev stuff
+#choco install grails
+
+
+#Install-ChocolateyPinnedTaskBarItem "$env:windir\system32\mstsc.exe"
