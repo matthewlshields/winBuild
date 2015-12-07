@@ -1,0 +1,26 @@
+..=cd ..
+...=cd ..\..
+....=cd ..\..\..
+~=c: & cd %USERPROFILE%
+
+dmstop=docker-machine stop $*
+dmstart=docker-machine start $*
+dmenv=docker-machine env --shell cmd $*
+dm=docker-machine $*
+dmstat=docker-machine status $*
+
+v=vagrant $*
+vup=vagrant up
+vhalt=vagrant halt
+vboom=vagrant destroy --force
+vinit=vagrant init
+vstat=vagrant status
+
+g=git $*
+ga=git add $*
+gc=git commit $*
+gstat=git status $*
+gstats=git status -s
+gpom=git push origin master
+
+st="D:\devl\software\Sublime Text 2\sublime_text.exe" $*
