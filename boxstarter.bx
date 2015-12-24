@@ -1,5 +1,4 @@
 # Boxstarter Package for configuring my preferred developer laptop
-# This includes most things needed from JVM-based development
 # Used on Windows 7 Pro
 
 # ===== Set personal preference items ====
@@ -33,13 +32,15 @@ $DevWorkspace = "$DevRootPath\ws"
 $DevSoftware = "$DevRootPath\software"
 $DevServers = "$DevRootPath\servers"
 $DevLogs = "$DevRootPath\logs"
+$DevBin = "$DevRootPath\bin"
 
 # My standard directory structure for application development
 New-Item -Path $DevRootPath -ItemType directory -force
-New-Item -Path $DevWorkspace -ItemType directory -force
-New-Item -Path $DevSoftware -ItemType directory -force
-New-Item -Path $DevServers -ItemType directory -force
-New-Item -Path $DevLogs -ItemType directory -force
+New-Item -Path $DevWorkspace -ItemType directory -force		# my source code goes here
+New-Item -Path $DevSoftware -ItemType directory -force		# installed software goes here, if possible
+New-Item -Path $DevServers -ItemType directory -force		# any web servers go here
+New-Item -Path $DevLogs -ItemType directory -force			# application logs write here
+New-Item -Path $DevBin -ItemType directory -force			# utility scripts go here
 
 # Standard developer tools for most things
 choco install putty.install -installArgs "/DIR=$DevSoftware\putty"
