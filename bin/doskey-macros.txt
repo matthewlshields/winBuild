@@ -23,4 +23,7 @@ gstat=git status $*
 gstats=git status -s
 gpom=git push origin master
 
+pb=packer build $*
+pbd=set PACKER_LOG=1 & packer build -debug $*
+
 st="D:\devl\software\Sublime Text 2\sublime_text.exe" $*
